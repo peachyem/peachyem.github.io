@@ -9,5 +9,6 @@ function convertData(fileData) {
 }
 
 function processData(strData){
-    console.log(strData);
+    dictionary = strData.split("\n");
+    console.log(dictionary);
 }
