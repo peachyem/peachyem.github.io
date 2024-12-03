@@ -9,6 +9,7 @@ function convertData(fileData) {
 }
 
 function processData(strData){
-    dictionary = strData.split("\n");
+    //might need to add "\r\n" or use regular expression: /\r?\n/ instead of just "\n"
+    dictionary = strData.split("\r\n");
     console.log(dictionary);
 }
