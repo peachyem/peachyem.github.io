@@ -78,7 +78,7 @@ function displayWords(){
     let m = 0;
     let wordSet = new Set();
     let w = new Set();
-    while(i < 10){
+    while(m < 10){
         while(bestValue.has(i) == false){
             i++;
         }
