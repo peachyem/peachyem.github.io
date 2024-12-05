@@ -11,7 +11,101 @@
             <input type="submit" value="Check">
         </form>
         <!-- to read from file in JS: readFile(Path, Options, Callback)-->
-         <script src="main.js" ></script>
+         <script >
+            // Create Arrays - From a text file  src="main.js"
+
+let dictionary;
+const bestValue = new Map();
+
+
+function convertData(fileData) {
+    return fileData.text();
+}
+
+function processData(strData){
+    //might need to add "\r\n" or use regular expression: /\r?\n/ instead of just "\n"
+    dictionary = strData.split("\r\n");
+    console.log(dictionary);
+    return dictionary;
+}
+
+const form = document.getElementById("SpellChecking");
+const textBox = document.getElementById("word");
+form.addEventListener("submit", (event) =>{
+    dict = fetch("dictionary.txt").then(convertData).then(processData);
+    event.preventDefault();
+    const origWord = textBox.value;
+    CheckSpelling(origWord, dict);
+    displayWords();
+});
+
+function CheckSpelling(origWord, dictionary){
+    for(let i =0; i < dictionary.length; i++){
+        let score = 0;
+
+        for(let j = 0; j < dictionary[i].length; j++){
+            if(origWord.at(j) != dictionary[i].at(j)){
+                score += Math.min(mismatch(origWord.at(j), dictionary[i].at(j)));
+            }
+        }
+        addToMap(score, dictionary[i]);
+    }
+}
+
+function addToMap(score, dictionary){
+    if (bestValue.has(score) == true ){
+        bestValue.get(score).add(dictionary);
+    }
+    else {
+        bestValue.set(score, new Set(dictionary));
+    }
+}
+
+function mismatch(orig, dict){
+    if(isVowel(orig) == true){
+        if(isVowel(dict) == true){
+            return 1;
+        } else {
+            return 3;
+        }
+    }else {
+        if(isVowel(dict) == false){
+            return 1;
+        } else {
+            return 3;
+        }
+    }
+}
+
+function isVowel(word){
+    lower = word.toLowerCase();
+    var result = false;
+    if(lower =="a" || lower =="e" || lower =="i" || lower =="o" || lower =="u" ||lower =="y" ){
+        result = true;
+    } 
+    return result;
+}
+
+function displayWords(){
+    const wordLog = document.querySelector(".words");
+    let i = 0;
+    let wordSet = new Set();
+    while(i < 10){
+        if(bestValue.has(i) == false){
+            i++;
+        }
+        w = bestValue.get(i)
+        for(let j = 0; j < w.size; j++){
+            wordSet.add(j);
+            i++
+        }
+        
+    }
+    for(let j = 0; j < wordSet.size; j++){
+        wordLog.innerHTML += `${wordSet[j]}<br/>`;
+    }
+}
+         </script>
          <div>
             <p class="words"></p>
          </div>
