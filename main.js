@@ -75,15 +75,19 @@ function isVowel(word){
 function displayWords(){
     const wordLog = document.querySelector(".words");
     let i = 0;
+    let m = 0;
     let wordSet = new Set();
+    let w = new Set();
     while(i < 10){
-        if(bestValue.has(i) == false){
+        while(bestValue.has(i) == false){
             i++;
         }
-        w = bestValue.get(i)
+        for(let l = 0; l < bestValue.get(i).size; l++){
+            w.add(bestValue.get(i).at[l]);    
+        }
         for(let j = 0; j < w.size; j++){
             wordSet.add(j);
-            i++
+            m++;
         }
         
     }
