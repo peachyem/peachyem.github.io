@@ -1,7 +1,8 @@
 // Create Arrays - From a text file
 
 let dictionary;
-var bestValue = new Map();
+const bestValue = new Map();
+
 
 function convertData(fileData) {
     return fileData.text();
@@ -21,6 +22,7 @@ form.addEventListener('submit', (event) =>{
     event.preventDefault();
     const origWord = textBox.value;
     CheckSpelling(origWord, dict);
+    displayWords();
 });
 
 function CheckSpelling(origWord, dictionary){
@@ -29,15 +31,19 @@ function CheckSpelling(origWord, dictionary){
 
         for(let j = 0; j < dictionary[i].length; j++){
             if(origWord.at(j) != dictionary[i].at(j)){
-                score += Math.min(mismatch(origWord.at(j), dictionary[i].at(j)))
+                score += Math.min(mismatch(origWord.at(j), dictionary[i].at(j)));
             }
         }
+        addToMap(score, dictionary[i]);
     }
 }
 
 function addToMap(score, dictionary){
-    for(let i = 0; i < 9; i++){
-        
+    if (bestValue.has(score) == true ){
+        bestValue.get(score).add(dictionary);
+    }
+    else {
+        bestValue.set(score, new Set(dictionary));
     }
 }
 
@@ -64,4 +70,24 @@ function isVowel(word){
         result = true;
     } 
     return result;
+}
+
+function displayWords(){
+    const wordLog = document.querySelector(".words");
+    let i = 0;
+    let wordSet = new Set();
+    while(i < 10){
+        if(bestValue.has(i) == false){
+            i++;
+        }
+        w = bestValue.get(i)
+        for(let j = 0; j < w.size; j++){
+            wordSet.add(j);
+            i++
+        }
+        
+    }
+    for(let j = 0; j < wordSet.size; j++){
+        wordLog.innerHTML += `${wordSet[j]}<br/>`;
+    }
 }
