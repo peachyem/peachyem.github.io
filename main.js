@@ -15,9 +15,8 @@ function processData(strData){
     return dictionary;
 }
 
-
+const form = document.getElementById("SpellChecking");
 form.addEventListener("submit", (event) =>{
-    const form = document.getElementById("SpellChecking");
     const textBox = document.getElementById("word");
     dict = fetch("dictionary.txt").then(convertData).then(processData);
     event.preventDefault();
