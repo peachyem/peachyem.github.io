@@ -87,37 +87,28 @@ function isVowel(word){
 }
 
 function displayWords(){
-    console.log(displayWords);
-    const wordLog = document.getElementById("wordContainer");
+    console.log("display words");
+    const wordLog = document.querySelector(".word");
     wordLog.innerHTML = "";
     console.log("Logging");
     let i = 0;
     let m = 0;
     let wordSet = new Set();
-    let w = new Set();
-    while(m < 10){
-        while(bestValue.has(i) == false){
-            console.log(i);
-            i++;
-        }
-        console.log(bestValue.get(i));
-        for(let l = 0; l < bestValue.get(i).size; l++){
-            w.add(bestValue.get(i).at[l]);    
-        }
-        for(let j = 0; j < w.size; j++){
-            wordSet.push(w.at(j));
-            console.log(w.at(j));
-            console.log(m);
+    while(m < 10 && bestValue.has(i)){
+        for (const word of bestValue.get(i)) {
+            wordSet.add(word);
             m++;
+            if(m >= 10){
+                break;
+            }
         }
-        
+        i++;
     }
-    wordLog.forEach( word => {
+    
+    for(const word of wordSet) {
         const wordElem = document.createElement("p");
         wordElem.textContent = word;
-        container.appendChild(wordElem);
-    });
-    //for(let j = 0; j < wordSet.size; j++){
-     //   wordLog.innerHTML += `${wordSet[j]}<br/>`;
-    //}
+        wordLog.appendChild(wordElem);
+    }
+    
 }
