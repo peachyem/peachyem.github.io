@@ -94,6 +94,7 @@ function displayWords(){
     let i = 0;
     let m = 0;
     let wordSet = new Set();
+    console.log("before while loop");
     while(m < 10 && bestValue.has(i)){
         console.log("in the while loop:)");
         for (const word of bestValue.get(i)) {
