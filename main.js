@@ -106,6 +106,7 @@ function displayWords(){
     }
     
     for(const word of wordSet) {
+        console.log(word);
         const wordElem = document.createElement("p");
         wordElem.textContent = word;
         wordLog.appendChild(wordElem);
