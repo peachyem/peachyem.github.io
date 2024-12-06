@@ -20,7 +20,8 @@ form.addEventListener("submit", (event) =>{
     console.log("Submit Pressed");
     event.preventDefault();
     const textBox = document.getElementById("word");
-    const origWord = textBox.value.toLowerCase();
+    const origWord = textBox.value;
+    //const origWord = textBox.value.toLowerCase();
     console.log(origWord);
     fetch("dictionary.txt").then(convertData).then(processData).then((dict) => {
     if(!dict) {
@@ -76,7 +77,7 @@ function mismatch(orig, dict){
 }
 
 function isVowel(word){
-    lower = word.toLowerCase();
+    let lower = word.toLowerCase();
     var result = false;
     if(lower =="a" || lower =="e" || lower =="i" || lower =="o" || lower =="u" ||lower =="y" ){
         result = true;
