@@ -99,7 +99,7 @@ function displayWords(){
     let wordSet = new Set();
     console.log("before while loop");
     while(m < 11){
-        while(bestValue.find(i) != undefined){
+        while(bestValue.at(i) != undefined){
             //console.log("in the while loop:)");
             for (const word of bestValue.at(i)) {
                // console.log(word);
