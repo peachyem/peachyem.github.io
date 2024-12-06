@@ -46,6 +46,7 @@ function CheckSpelling(origWord, dictionary){
                 score += Math.min(mismatch(origWord.at(j), dictionary[i].at(j)));
             }
         }
+        console.log(dictionary[i]);
         addToMap(score, dictionary[i]);
     }
 }
@@ -54,6 +55,7 @@ function addToMap(score, dictionary){
     console.log("Added to map");
     if (bestValue.has(score) == true ){
         bestValue.get(score).push(dictionary);
+        console.log(bestValue.get(score));
     }
     else {
         bestValue.set(score, new Array(dictionary));
@@ -97,9 +99,9 @@ function displayWords(){
     console.log("before while loop");
     while(m < 11){
         while(bestValue.has(i)){
-            console.log("in the while loop:)");
+            //console.log("in the while loop:)");
             for (const word of bestValue.get(i)) {
-                console.log(word);
+               // console.log(word);
                 wordSet.add(word);
                 m++;
                 if(m >= 11){
@@ -109,7 +111,7 @@ function displayWords(){
         }
         i++;
     }
-    
+    console.log("After while loop");
     for(const word of wordSet) {
         console.log(word);
         const wordElem = document.createElement("p");
