@@ -22,7 +22,7 @@ form.addEventListener("submit", (event) =>{
     dict = fetch("dictionary.txt").then(convertData).then(processData);
     event.preventDefault();
     const origWord = textBox.value;
-    console.log("origWord);
+    console.log(origWord);
     CheckSpelling(origWord, dict);
     displayWords();
 });
