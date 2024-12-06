@@ -100,7 +100,7 @@ function displayWords(){
             console.log(i);
             i++;
         }
-        console.log(bestValue.get(i);
+        console.log(bestValue.get(i));
         for(let l = 0; l < bestValue.get(i).size; l++){
             w.add(bestValue.get(i).at[l]);    
         }
