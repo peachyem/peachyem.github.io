@@ -1,7 +1,8 @@
 // Create Arrays - From a text file
 
 let dictionary;
-const bestValue = new Map();
+//const bestValue = new Map();
+const bestValue = new Array.from( {length: 70}, (_, i) => undefined);
 
 
 function convertData(fileData) {
@@ -53,12 +54,12 @@ function CheckSpelling(origWord, dictionary){
 
 function addToMap(score, dictionary){
     console.log("Added to map");
-    if (bestValue.has(score) == true ){
-        bestValue.get(score).push(dictionary);
-        console.log(bestValue.get(score));
+    if (bestValue.at(score) != undefined ){
+        bestValue.at(score).push(dictionary);
+        console.log(bestValue.at(score));
     }
     else {
-        bestValue.set(score, new Array(dictionary));
+        bestValue.splice(score, 0, new Array(dictionary));
     }
 }
 
@@ -98,9 +99,9 @@ function displayWords(){
     let wordSet = new Set();
     console.log("before while loop");
     while(m < 11){
-        while(bestValue.has(i)){
+        while(bestValue.find(i) != undefined){
             //console.log("in the while loop:)");
-            for (const word of bestValue.get(i)) {
+            for (const word of bestValue.at(i)) {
                // console.log(word);
                 wordSet.add(word);
                 m++;
