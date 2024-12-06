@@ -102,7 +102,9 @@ function displayWords(){
             w.add(bestValue.get(i).at[l]);    
         }
         for(let j = 0; j < w.size; j++){
-            wordSet.push(j);
+            wordSet.push(w.at(j));
+            console.log(w.at(j));
+            console.log(m);
             m++;
         }
         
