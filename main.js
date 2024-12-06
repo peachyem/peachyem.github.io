@@ -88,7 +88,8 @@ function isVowel(word){
 
 function displayWords(){
     console.log(displayWords);
-    const wordLog = document.querySelector(".words");
+    const wordLog = document.getElementById("words");
+    console.log("Logging");
     let i = 0;
     let m = 0;
     let wordSet = new Set();
