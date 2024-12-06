@@ -17,6 +17,7 @@ function processData(strData){
 
 const form = document.getElementById("SpellChecking");
 form.addEventListener("submit", (event) =>{
+    console.log("Submit Pressed");
     const textBox = document.getElementById("word");
     dict = fetch("dictionary.txt").then(convertData).then(processData);
     event.preventDefault();
@@ -27,6 +28,7 @@ form.addEventListener("submit", (event) =>{
 
 function CheckSpelling(origWord, dictionary){
     for(let i =0; i < dictionary.length; i++){
+        console.log("Check Spelling loop");
         let score = 0;
 
         for(let j = 0; j < dictionary[i].length; j++){
@@ -39,6 +41,7 @@ function CheckSpelling(origWord, dictionary){
 }
 
 function addToMap(score, dictionary){
+    console.log("Added to map");
     if (bestValue.has(score) == true ){
         bestValue.get(score).add(dictionary);
     }
@@ -73,6 +76,7 @@ function isVowel(word){
 }
 
 function displayWords(){
+    console.log(displayWords);
     const wordLog = document.querySelector(".words");
     let i = 0;
     let m = 0;
