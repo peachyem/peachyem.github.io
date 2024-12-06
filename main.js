@@ -91,17 +91,17 @@ function displayWords(){
     const wordLog = document.querySelector(".word");
     wordLog.innerHTML = "";
     console.log("Logging");
-    let i = 0;
+    let i = 1;
     let m = 0;
     let wordSet = new Set();
     console.log("before while loop");
-    while(m < 10 && bestValue.has(i)){
+    while(m < 11 && bestValue.has(i)){
         console.log("in the while loop:)");
         for (const word of bestValue.get(i)) {
             console.log(word);
             wordSet.add(word);
             m++;
-            if(m >= 10){
+            if(m >= 11){
                 break;
             }
         }
