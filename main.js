@@ -53,10 +53,10 @@ function CheckSpelling(origWord, dictionary){
 function addToMap(score, dictionary){
     console.log("Added to map");
     if (bestValue.has(score) == true ){
-        bestValue.get(score).add(dictionary);
+        bestValue.get(score).push(dictionary);
     }
     else {
-        bestValue.set(score, new Set(dictionary));
+        bestValue.set(score, new Array(dictionary));
     }
 }
 
@@ -101,7 +101,7 @@ function displayWords(){
             w.add(bestValue.get(i).at[l]);    
         }
         for(let j = 0; j < w.size; j++){
-            wordSet.add(j);
+            wordSet.push(j);
             m++;
         }
         
