@@ -18,13 +18,21 @@ function processData(strData){
 const form = document.getElementById("SpellChecking");
 form.addEventListener("submit", (event) =>{
     console.log("Submit Pressed");
-    const textBox = document.getElementById("word");
-    dict = fetch("dictionary.txt").then(convertData).then(processData);
     event.preventDefault();
-    const origWord = textBox.value;
+    const textBox = document.getElementById("word");
+    const origWord = textBox.value.toLowerCase();
     console.log(origWord);
+    fetch("dictionary.txt").then(convertData).then(processData).then((dict) => {
+    if(!dict) {
+        console.error("Error loading dictionary:(");
+        return;
+    }
     CheckSpelling(origWord, dict);
     displayWords();
+    })
+    .catch((error) => {
+        console.error("Error fetching or processing dictionary:", error);
+    });
 });
 
 function CheckSpelling(origWord, dictionary){
