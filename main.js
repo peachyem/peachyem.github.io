@@ -109,6 +109,9 @@ function displayWords(){
                     break;
                 }
             }
+            if(m >= 11){
+                 break;
+            }
         }
         i++;
     }
