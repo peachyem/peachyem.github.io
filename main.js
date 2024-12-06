@@ -77,7 +77,8 @@ function mismatch(orig, dict){
 }
 
 function isVowel(word){
-    let lower = word.toLowerCase();
+    //let lower = word.toLowerCase();
+    let lower = word;
     var result = false;
     if(lower =="a" || lower =="e" || lower =="i" || lower =="o" || lower =="u" ||lower =="y" ){
         result = true;
