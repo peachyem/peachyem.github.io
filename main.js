@@ -2,7 +2,7 @@
 
 let dictionary;
 //const bestValue = new Map();
-const bestValue = new Array.from( {length: 70}, (_, i) => undefined);
+const bestValue = new Array(70).fill(undefined);
 
 
 function convertData(fileData) {
