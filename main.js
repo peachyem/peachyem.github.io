@@ -88,7 +88,8 @@ function isVowel(word){
 
 function displayWords(){
     console.log(displayWords);
-    const wordLog = document.getElementById("words");
+    const wordLog = document.getElementById("wordContainer");
+    wordLog.innerHTML = "";
     console.log("Logging");
     let i = 0;
     let m = 0;
@@ -96,8 +97,10 @@ function displayWords(){
     let w = new Set();
     while(m < 10){
         while(bestValue.has(i) == false){
+            console.log(i);
             i++;
         }
+        console.log(bestValue.get(i);
         for(let l = 0; l < bestValue.get(i).size; l++){
             w.add(bestValue.get(i).at[l]);    
         }
@@ -109,7 +112,12 @@ function displayWords(){
         }
         
     }
-    for(let j = 0; j < wordSet.size; j++){
-        wordLog.innerHTML += `${wordSet[j]}<br/>`;
-    }
+    wordLog.forEach( word => {
+        const wordElem = document.createElement("p");
+        wordElem.textContent = word;
+        container.appendChild(wordElem);
+    });
+    //for(let j = 0; j < wordSet.size; j++){
+     //   wordLog.innerHTML += `${wordSet[j]}<br/>`;
+    //}
 }
