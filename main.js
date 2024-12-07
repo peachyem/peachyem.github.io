@@ -100,7 +100,7 @@ function displayWords(){
     let wordSet = new Set();
     console.log("before while loop");
     while(m < 11){
-        while(bestValue.at(i) != undefined){
+        if(bestValue.at(i) != undefined){
             console.log("in the while loop:)");
             for (const word of bestValue.at(i)) {
                 console.log(word);
@@ -113,8 +113,9 @@ function displayWords(){
             if(m >= 11){
                  break;
             }
+        } else {
+            i++;
         }
-        i++;
     }
     console.log("After while loop");
     for(const word of wordSet) {
