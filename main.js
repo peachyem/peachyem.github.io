@@ -52,22 +52,22 @@ function CheckSpelling(origWord, dictionary){
 
         for(let j = 1; j < dictionary[i].length; j++){
             for(let h = 1; h < origWord.length; h++){
-                if(origWord.at(h) !== dictionary[i].at(j)){
-                    table[j][h] = table[j-1][h-1];
-                } else {
-                    table[j][h] = Math.min(Math.min(table[j-1][h-1] + mismatch(origWord.at(h), dictionary[i].at(j)),
-                                                    table[j-1][h] + 2),
-                                                    table[j][h-1] + 2);
-                }
-            score = table[j][h];
-            console.log(score);
+                // checks if the letters equal eachother, if not calculates mismatch score
+                const matchScore = origWord.at(h) === dictionary[i].at(j) ? 0 : mismatch(origWord.at(h), dictionary[i].at(j));
+                table[j][h] = Math.min(Math.min(table[j-1][h-1] + matchScore,
+                                                table[j-1][h] + 2),
+                                                table[j][h-1] + 2);
             }
             
         }
-        console.log(dictionary[i]);
-        addToMap(score, dictionary[i]);
+            
     }
+    const score = table[dictionary[i].length][origWord.length];
+    console.log(score);
+    console.log(dictionary[i]);
+    addToMap(score, dictionary[i]);
 }
+
 
 function addToMap(score, dictionary){
     console.log("Added to map");
