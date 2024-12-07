@@ -43,8 +43,8 @@ function CheckSpelling(origWord, dictionary){
         console.log("Check Spelling loop");
         let score = 0;
 
-        for(let j = 0; j < dictionary[i].length; j++){
-            for(let h = 0; h < origWord.length; h++){
+        for(let j = 0; j < origWord.length; j++){
+            for(let h = 0; h < dictionary[i].length; h++){
                 if(origWord.at(j) != dictionary[i].at(j)){
                     score += Math.min(Math.min(mismatch(origWord.at(j), dictionary[i].at(j))), 2);
                 }
