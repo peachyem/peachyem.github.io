@@ -61,7 +61,7 @@ function CheckSpelling(origWord, dictionary){
                 }
             }
         }
-        score = table[totlength][totlength];
+        score = table[dictionary[i].length][origWord.length];
         console.log(dictionary[i]);
         addToMap(score, dictionary[i]);
     }
