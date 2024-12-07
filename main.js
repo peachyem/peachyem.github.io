@@ -39,9 +39,9 @@ form.addEventListener("submit", (event) =>{
 });
 
 function CheckSpelling(origWord, dictionary){
-    
+
     for(let i = 0; i < dictionary.length; i++){
-        let score;
+
         let totlength = origWord.length + dictionary[i].length;
         let table = new Array(totlength + 1).fill().map( () => new Array(totlength + 1).fill(0));
         for(let t = 0; t <= (totlength); t++){
@@ -61,11 +61,12 @@ function CheckSpelling(origWord, dictionary){
             
         }
             
-    }
+    
     const score = table[dictionary[i].length][origWord.length];
     console.log(score);
     console.log(dictionary[i]);
     addToMap(score, dictionary[i]);
+    }
 }
 
 
