@@ -113,9 +113,8 @@ function displayWords(){
             if(m >= 11){
                  break;
             }
-        } else {
-            i++;
-        }
+        } 
+        i++;
     }
     console.log("After while loop");
     for(const word of wordSet) {
