@@ -50,8 +50,8 @@ function CheckSpelling(origWord, dictionary){
         console.log("Check Spelling loop");
         let score = 0;
 
-        for(let j = 0; j < dictionary[i].length; j++){
-            for(let h = 0; h < origWord.length; h++){
+        for(let j = 1; j < dictionary[i].length; j++){
+            for(let h = 1; h < origWord.length; h++){
                 if(origWord.at(h) !== dictionary[i].at(j)){
                     table[j][h] = table[j-1][h-1];
                 } else {
