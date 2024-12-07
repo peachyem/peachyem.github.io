@@ -41,6 +41,7 @@ form.addEventListener("submit", (event) =>{
 function CheckSpelling(origWord, dictionary){
     
     for(let i = 0; i < dictionary.length; i++){
+        let score;
         let totlength = origWord.length + dictionary[i].length;
         let table = new Array(totlength + 1).fill().map( () => new Array(totlength + 1).fill(0));
         for(let t = 0; t <= (totlength); t++){
@@ -59,7 +60,7 @@ function CheckSpelling(origWord, dictionary){
                                                     table[j][h-1] + 2);
                 }
             }
-            let score = table[j][h];
+            score = table[j][h];
             console.log(score);
         }
         console.log(dictionary[i]);
