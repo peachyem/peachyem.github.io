@@ -30,7 +30,7 @@ form.addEventListener("submit", (event) =>{
         return;
     }
     CheckSpelling(origWord, dict);
-    console.log(bestValue.at(1));
+    console.log(bestValue.at(0));
     displayWords();
     })
     .catch((error) => {
@@ -95,7 +95,7 @@ function displayWords(){
     const wordLog = document.querySelector(".word");
     wordLog.innerHTML = "";
     console.log("Logging");
-    let i = 1;
+    let i = 0;
     let m = 0;
     let wordSet = new Set();
     console.log("before while loop");
