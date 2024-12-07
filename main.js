@@ -50,8 +50,8 @@ function CheckSpelling(origWord, dictionary){
         }
         console.log("Check Spelling loop");
 
-        for(let j = 1; j < dictionary[i].length; j++){
-            for(let h = 1; h < origWord.length; h++){
+        for(let j = 1; j =< dictionary[i].length; j++){
+            for(let h = 1; h =< origWord.length; h++){
                 // checks if the letters equal eachother, if not calculates mismatch score
                 const matchScore = origWord.at(h) === dictionary[i].at(j) ? 0 : mismatch(origWord.at(h), dictionary[i].at(j));
                 table[j][h] = Math.min(Math.min(table[j-1][h-1] + matchScore,
