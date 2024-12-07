@@ -39,17 +39,29 @@ form.addEventListener("submit", (event) =>{
 });
 
 function CheckSpelling(origWord, dictionary){
-    for(let i =0; i < dictionary.length; i++){
+    
+    for(let i = 0; i < dictionary.length; i++){
+        let totlength = origWord.length + dictionary[i].length;
+        let table = new Array(totlength + 1).fill().map( () => new Array(totlength + 1).fill(0));
+        for(let t = 0; t <= (totlength); t++){
+            table[t][0] = t * 2;
+            table[0][t] = t * 2;
+        }
         console.log("Check Spelling loop");
         let score = 0;
 
-        for(let j = 0; j < origWord.length; j++){
-            for(let h = 0; h < dictionary[i].length; h++){
-                if(origWord.at(j) != dictionary[i].at(j)){
-                    score += Math.min(Math.min(mismatch(origWord.at(j), dictionary[i].at(j))), 2);
+        for(let j = 0; j < dictionary[i].length; j++){
+            for(let h = 0; h < origWord.length; h++){
+                if(origWord.at(h) !== dictionary[i].at(j)){
+                    table[j][h] = table[j-1][h-1];
+                } else {
+                    table[j][h] = Math.min(Math.min(table[j-1][h-1] + mismatch(origWord.at(h), dictionary[i].at(j)),
+                                                    table[j-1][h] + 2),
+                                                    table[j][h-1] + 2);
                 }
             }
         }
+        score = table[totlength][totlength];
         console.log(dictionary[i]);
         addToMap(score, dictionary[i]);
     }
