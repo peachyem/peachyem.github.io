@@ -45,7 +45,7 @@ function CheckSpelling(origWord, dictionary){
 
         for(let j = 0; j < dictionary[i].length; j++){
             if(origWord.at(j) != dictionary[i].at(j)){
-                score += Math.min(mismatch(origWord.at(j), dictionary[i].at(j)));
+                score += Math.min(Math.min(mismatch(origWord.at(j), dictionary[i].at(j))), 2);
             }
         }
         console.log(dictionary[i]);
