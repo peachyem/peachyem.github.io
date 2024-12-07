@@ -48,7 +48,6 @@ function CheckSpelling(origWord, dictionary){
             table[0][t] = t * 2;
         }
         console.log("Check Spelling loop");
-        let score = 0;
 
         for(let j = 1; j < dictionary[i].length; j++){
             for(let h = 1; h < origWord.length; h++){
@@ -61,7 +60,7 @@ function CheckSpelling(origWord, dictionary){
                 }
             }
         }
-        score = table[dictionary[i].length][origWord.length];
+        let score = table[dictionary[i].length][origWord.length];
         console.log(dictionary[i]);
         addToMap(score, dictionary[i]);
     }
