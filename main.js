@@ -59,9 +59,9 @@ function CheckSpelling(origWord, dictionary){
                                                     table[j][h-1] + 2);
                 }
             }
+            let score = table[j][h];
+            console.log(score);
         }
-        let score = table[dictionary[i].length][origWord.length];
-        console.log(score);
         console.log(dictionary[i]);
         addToMap(score, dictionary[i]);
     }
