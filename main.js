@@ -30,6 +30,7 @@ form.addEventListener("submit", (event) =>{
         return;
     }
     CheckSpelling(origWord, dict);
+    console.log(bestValue.at(1));
     displayWords();
     })
     .catch((error) => {
